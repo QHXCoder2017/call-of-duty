@@ -1,0 +1,57 @@
+Python
+
+class Solution:
+    def twoSum(self, nums, target):
+        for i, num in enumerate(nums):
+            sub_num = target - num
+            if sub_num in nums:
+                t_index = nums.index(sub_num)
+                if t_index != i:
+                    return [i, t_index]
+
+C++
+
+class Solution:
+{
+public:
+    vector<int> twoSum(vector<int>& nums, int target)
+    {
+        vector<int> twoSum;
+        for(int i=0; i<nums.size(); i++)
+        {
+            for(int j=i+1; j<nums.size(); j++)
+            {
+                if((nums[i]+nums[j])==target)
+                {
+                    twoSum.push_back(i);
+                    twoSum.push_back(j);
+                }
+            }
+        }
+    return twoSum;
+    }
+};
+
+class Solution:
+{
+public:
+    vector<int> twoSum(vector<int>& nums, int target)
+    {
+        vector<int> twoSum;
+        map<int, int> tmpmap;  //键值为nums的值，变量值为nums下标
+        for(int i=0; i<nums.size(); i++)
+        {
+            tmpmap[nums[i]] = i;
+        }
+        for(int i=0; i<nums.size(); i++)
+        {   //  如果目标值减去循环到的值对应的下标不为0，或者不为i，存在有另一个数与循环值相加等于target，则返回结果
+            if (tmpmap.count(target-nums[i]) !=0 && tmpmap[target-nums[i]]!=i)
+            {
+                twoSum.push_back(i);
+                twoSum.push_back(tmpmap[target - nums[i]]);
+                break;
+            }
+        }
+        return twoSum;
+    }
+};
