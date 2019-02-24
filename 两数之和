@@ -45,7 +45,7 @@ public:
         }
         for(int i=0; i<nums.size(); i++)
         {   //  如果目标值减去循环到的值对应的下标不为0，或者不为i，存在有另一个数与循环值相加等于target，则返回结果
-            if (tmpmap.count(target-nums[i]) !=0 && tmpmap[target-nums[i]]!=i)
+            if (tmpmap.count(target-nums[i]) !=0 && tmpmap[target-nums[i]] != i)
             {
                 twoSum.push_back(i);
                 twoSum.push_back(tmpmap[target - nums[i]]);
