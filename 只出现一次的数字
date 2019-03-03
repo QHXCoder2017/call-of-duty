@@ -1,1 +1,27 @@
+Python
 
+class Solution:
+    def singleNumber(self, nums):
+        res = 0
+        for i in nums:
+            res ^= i  # 0与任何数异或为任何数，任何数与自己异或为0；异或运算时要将10进制数换算成2进制数然后按位进行异或再转换成10进制
+        return res
+        
+C++
+
+class Solution
+{
+public:
+    static int singleNumber(vector<int>& nums)
+    {
+        std::sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i += 2)
+        {
+            if (nums[i] != nums[i+1])
+            {
+                return nums[i];
+            }
+        }
+        return nums[nums.size()];
+    }
+};
