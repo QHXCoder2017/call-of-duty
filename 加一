@@ -37,12 +37,12 @@ public:
             if(i == digits.size() - 1)  /*对digits的末位进行操作*/
             {
                 sum = (digits[i] + 1 + c) % 10;
-                jinwei = (digits[i] + 1 + c) / 10;
+                c = (digits[i] + 1 + c) / 10;
             }
             else
             {
                 sum = (digits[i] + c) % 10;
-                jinwei = (digits[i] + c) / 10;
+                c = (digits[i] + c) / 10;
             }
             digits[i] = sum; /*将+1后的值给digits的末位*/
            /* sum = 0; */
