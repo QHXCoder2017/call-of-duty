@@ -1,0 +1,34 @@
+Python
+
+class Solution:
+    def rotate(self, nums, k)
+        n = len(nums)
+        step = k % n
+        i = 0
+        j = n-step-1
+        while i < j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1
+        i = n-step
+        j = n-1
+        while i < j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1
+        nums.reverse()
+        
+C++
+
+class Solution
+{
+public:
+    void rotate(vector<int>& nums, int k)
+    {
+        vector<int> t = nums;
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            nums[(i+k) % nums.size()] = t[i];  /* a % b = a */
+        }
+    }
+};
