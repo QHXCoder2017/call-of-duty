@@ -1,0 +1,63 @@
+Python
+
+class Solution:
+    def rotate(self, matrix):
+        length = len(matrix)
+        for i in range(length):
+            for j in range(i+1, length):
+                temp = matrix[i][j]
+                matrix[i][j] = matrix[j][i]
+                matrix[j][i] = temp
+        for i in range(length):
+            matrix[i] = matrix[i][::-1]
+            
+class Solution:
+    def rotate(self, matrix):
+        matrix[:] = map(list, zip(*matrix[::-1]))
+        
+        #map函数接受一个list和一个函数f，并通过把f作用在list上得到一个新的list并返回
+        #zip()函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表
+        # *是用来接受任意多个参数并将其放在同一个元组中
+        # [::-1]表示从从索引的最后一个元素到第一个元素
+        
+C++
+
+class Solution 
+{
+public:
+    void rotate(vector<vector<int>>& matrix) 
+    {
+        int n = matrix.size();
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < n-i; ++j)
+            {
+                swap(matrix[i][j], matrix[n-1-j][n-1-i]); /*把第三列换到第一行，第二列换到第二行，第一列换到第三行*/
+            }
+        }
+        for (int i = 0; i < n/2; ++i) /*实际上i只取0*/
+        {
+            for (int j = 0; j < n; ++j)
+            {
+                swap(matrix[i][j], matrix[n-1-i][j]); /*将上面处理后的矩阵第1行与第3行互换*/
+            }
+        }
+    }
+};
+
+class Solution
+{
+public:
+    void rotate(vector<vector<int>>& matrix) 
+    {
+        int n = matrix.size();
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = i+1; j < n; ++j)
+            {
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        reverse(matrix[i].begin(), matrix[i].end());
+        }
+    }
+};
