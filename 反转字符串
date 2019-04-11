@@ -1,0 +1,10 @@
+Python
+
+class Solution:
+    def reverseString(self, s):
+        # 切片法
+        result = s[::-1]
+        return result
+        
+C++
+
