@@ -16,6 +16,25 @@ class Solution:
             return x_int
             
 C++
+
+class Solution
+{
+public:
+    int reverse(int x)
+    {
+        int flag = x<0 ? -1:1;
+        int num = 0;
+        while(x)
+        {
+            if((flag==-1&&(INT_MIN/10>num)) || (flag==1&&INT_MAX/10<num))
+                return 0;
+            num = num*10 + x%10;
+            x /=  10;
+        }
+        return num;
+    }
+};
+
 class Solution
 {
 public:
@@ -38,23 +57,5 @@ public:
             x = x/10;
         }
         return res;
-    }
-};
-
-class Solution
-{
-public:
-    int reverse(int x)
-    {
-        int flag = x<0 ? -1:1;
-        int num = 0;
-        while(x)
-        {
-            if((flag==-1&&(INT_MIN/10>num)) || (flag==1&&INT_MAX/10<num))
-                return 0;
-            num = num*10 + x%10;
-            x /=  10;
-        }
-        return num;
     }
 };
