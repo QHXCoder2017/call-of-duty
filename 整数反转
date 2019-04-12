@@ -34,28 +34,3 @@ public:
         return num;
     }
 };
-
-class Solution
-{
-public:
-    int reverse(int x)
-    {
-        long long res = 0;
-        long long max_val = 1;
-        max_val = max_val<<31;
-        if(x>=max_val)
-            return res;
-        while(x && x%10==0)
-        {
-            x = x/10;
-        }
-        while(x)
-        {
-            res = res*10+x%10;
-            if(res >= max_val || res < (-1*max_val))
-                return 0;
-            x = x/10;
-        }
-        return res;
-    }
-};
