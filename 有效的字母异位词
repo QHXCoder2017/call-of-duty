@@ -1,0 +1,11 @@
+Python
+
+class Solution:
+    def isAnagram(self, s, t):
+        if len(t) != len(s):
+            return False
+        c = set(t) # set() 函数创建一个无序不重复元素集，可进行关系测试，删除重复数据，还可以计算交集、差集、并集等。
+        for i in c:
+            if t.count(i) != s.count(i): # count() 方法用于统计字符串里某个字符出现的次数。可选参数为在字符串搜索的开始与结束位置。
+                return False
+        return True
