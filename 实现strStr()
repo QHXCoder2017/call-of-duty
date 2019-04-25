@@ -1,0 +1,38 @@
+Python
+
+class Solution:
+    def strStr(self, haystack, needle):
+        l = len(needle)
+        for i in range(len(haystack) - l + 1):  # 控制范围
+            if haystack[i:i+l] == needle:  # 如果haystack中的两个字符等于整个needle的字符
+                return i  # 返回第一个位置对应的索引
+        return -1
+        
+C++
+
+class Solution 
+{
+public:
+    int strStr(string haystack, string needle)
+    {
+        if(haystack.size() == 0 && needle.size() != 0)
+            return -1;
+        int l1=haystack.size();
+        int l2=needle.size();
+        for(int i = 0 ; i <= l1-l2; i++)
+        {
+            int flag = 1;
+            for(int j = 0 ; j < needle.size() ; j ++)
+            {
+                if(haystack[i+j] != needle[j])
+                {
+                    flag = 0;
+                    break;
+                }
+            }
+            if(flag)
+                return i;
+        }
+        return -1;
+    }
+};
