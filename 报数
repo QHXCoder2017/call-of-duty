@@ -32,24 +32,24 @@ class Solution
 public:
     string countAndSay(int n)
     {
-        string a="1",temp="";
+        string a = "1", temp = "";
         //不断迭代，每一项的结果都存在a中，利用这个求下一项
-        for(int i=1;i<n;i++)
+        for(int i=1; i<n; i++)
         {
-            int t=0;
+            int t = 0;
             while(t<a.length())
             {
-                int n=1;
-                while(a[t]==a[t+1]&&(t+1)<a.length())  //判断有多少个重复的
+                int n = 1;
+                while(a[t]==a[t+1] && (t+1)<a.length())  //判断有多少个重复的
                 {
                     n++;  //统计重复的个数
                     t++;
                 }
-                temp=temp+to_string(n)+a[t]; //to_string(n)输出n
+                temp = temp + to_string(n) + a[t]; //to_string(n)输出n
                 t++;  //这一轮重复的判断完了，判断下一个有没有重复的
             }
-            a=temp;
-            temp="";
+            a = temp;
+            temp = "";
         }
         return a;
     }
