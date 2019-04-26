@@ -1,0 +1,38 @@
+Python
+
+class Solution:
+    def longestCommonPrefix(self, strs):
+        res = ""
+        if len(strs) == 0:
+            return ""
+        for each in zip(*strs): # zip()函数用于将可迭代对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表
+            if len(set(each)) == 1: # 利用集合创建一个无序不重复元素集
+                res += each[0]
+            else:
+                return res
+        return res
+        
+C++
+
+class Solution 
+{
+public:
+    string longestCommonPrefix(vector<string>& strs)
+    {
+        if (strs.size() == 0)
+            return string();
+        else if (strs.size() == 1)
+            return strs[0];    
+        string ret;
+        for (int i = 0; i < strs[0].size(); ++i) // 直接取第一个字符串作为最长公共前缀，将其每个字符遍历过一次。设最长字符实际为k，共n个元素，则复杂度O(nk)
+        {
+            for (int j = 0; j < strs.size(); ++j)
+            {
+                if (strs[0][i] != strs[j][i])
+                    return ret;
+            }
+        ret += strs[0][i];
+        }
+    return ret;
+    }
+};
