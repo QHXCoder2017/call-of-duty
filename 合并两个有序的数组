@@ -1,0 +1,6 @@
+Python
+
+class Solution:
+    def merge(self, nums1, m, nums2, n):
+        nums1[m:m+n] = nums2[:n]  # nums1的元素不动，增加n个，将nums2放到nums1中
+        nums1.sort()
