@@ -1,0 +1,34 @@
+Python
+
+class Solution:
+    def addDigits(self, num: int) -> int:
+        s = str(num)
+        result = 0
+        for i in s:
+            result += int(i)
+        while result>9:
+            s = str(result)
+            result = 0
+            for i in s:
+                result += int(i)
+        return result
+        
+C++
+class Solution
+{
+public:
+    int addDigits(int num)
+    {
+        int sum = 0;
+        while(num)
+        {
+            sum += num % 10;
+            num /= 10;
+        }
+        if (sum < 10)
+        {
+            return sum;
+        }
+        return addDigits(sum);
+    }
+};
