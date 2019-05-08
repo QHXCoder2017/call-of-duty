@@ -1,0 +1,36 @@
+Python
+
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        return str(self.str2int(num1)+self.str2int(num2))
+ 
+    def str2int(self, s):
+        s = s[::-1]
+        num = 0
+        for i, v in enumerate(s):
+            offset = ord(v) - ord('0')
+            num += offset * (10 ** i)
+        return num
+        
+C++
+
+class Solution
+{
+public:
+    string addStrings(string num1, string num2)
+    {
+        string res = "";
+        int m = num1.size(), n = num2.size();
+        int i = m - 1, j = n - 1;
+        int carry = 0;
+        while(i >= 0 || j >= 0)
+        {
+            int a = i >= 0 ? num1[i--] - '0' : 0;
+            int b = j >= 0 ? num2[j--] - '0' : 0;
+            int sum = a + b + carry;
+            res.insert(res.begin(), sum % 10 + '0');
+            carry = sum / 10;
+        }
+        return carry ? "1" + res : res;
+    }
+};
