@@ -24,11 +24,11 @@ public:
         for(int i=1; i<nums.size(); i++)
         {
             if(n>0)
-                n+=nums[i];
+                n += nums[i];
             else
-                n=nums[i];
+                n = nums[i];
             if(sum<n)
-                sum=n;
+                sum = n;
         }
     return sum;
     }
