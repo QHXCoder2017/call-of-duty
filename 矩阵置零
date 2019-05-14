@@ -42,3 +42,38 @@ class Solution:
         return
         
 C++
+
+class Solution
+{
+public:
+        void setZeroes(vector<vector<int>>& matrix)
+        {
+            int len1 = matrix.size();
+            if(len1==0)
+                return;
+            int len2 = matrix[0].size();
+            if(len2==0)
+                return;
+            vector<bool> row(len1), col(len2);
+            for(int i=0; i<len1; i++)
+            {
+                for(int j=0; j<len2; j++)
+                {
+                    if(matrix[i][j] == 0)
+                    {
+                        row[i] = true; col[j] = true;
+                    }
+                }
+            }
+            for(int i=0; i<len1; i++)
+            {
+                for(int j=0; j<len2; j++)
+                {
+                    if(row[i] == true)
+                        matrix[i][j] = 0;
+                    else if(col[j] == true)
+                        matrix[i][j] = 0;
+                }
+            }
+            return;
+        }
