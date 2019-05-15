@@ -1,0 +1,36 @@
+Python
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        max_len = 0
+        if s is None or len(s) == 0:
+            return max_len
+        str_dict = {}
+        one_max = 0
+        start = 0
+        for i in range(len(s)):
+            if s[i] in str_dict and str_dict[s[i]] >= start:  # 判断当前字符是否在字典中和当前字符的下标是否大于等于最近重复字符的所在位置
+                start = str_dict[s[i]] + 1
+            one_max = i - start + 1  # 在此次循环中，最大的不重复子串的长度
+            str_dict[s[i]] = i  # 把当前位置覆盖字典中的位置
+            max_len = max(max_len, one_max)  # 比较此次循环的最大不重复子串长度和历史循环最大不重复子串长度
+        return max_len
+        
+C++
+
+class Solution
+{
+public:
+    int lengthOfLongestSubstring(string s)
+    {
+        int res = 0, left = 0, i = 0, n = s.size();
+        unordered_map<char, int> m;
+        for (int i = 0; i < n; ++i)
+        {
+            left = max(left, m[s[i]]);
+            m[s[i]] = i + 1;
+            res = max(res, i - left + 1);
+        }
+        return res;
+    }
+};
