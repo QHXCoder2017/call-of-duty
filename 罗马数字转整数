@@ -2,12 +2,53 @@ Python
 
 class Solution:
     def romanToInt(self, s: str) -> int:
-        sum = 0
+        roman_sum = 0
         convert={'M': 1000,'D': 500 ,'C': 100,'L': 50,'X': 10,'V': 5,'I': 1}
         for i in range(len(s)-1):
             if convert[s[i]] < convert[s[i+1]]:                
-                sum -= convert[s[i]]
+                roman_sum -= convert[s[i]]
             else:
-                sum += convert[s[i]]
-        sum += convert[s[-1]]        
-        return sum
+                roman_sum += convert[s[i]]
+        roman_sum += convert[s[-1]]        
+        return roman_sum
+
+C++
+
+class Solution
+{
+public:
+    int romanToInt(string s)
+    {
+        int roman_sum = 0; 
+        int i = 0; 
+        int n = s.size();
+    for(i; i<n; i++)
+    {
+        switch(s.at(i)) //获取一个字符
+        {
+            case 'I':roman_sum += 1; break;
+            case 'V':roman_sum += 5; break;
+            case 'X':roman_sum += 10; break;
+            case 'L':roman_sum += 50; break;
+            case 'C':roman_sum += 100; break;
+            case 'D':roman_sum += 500; break;
+            case 'M':roman_sum += 1000; break;
+        }
+        if (i != 0)
+        {
+            if(s.at(i-1) == 'I' && (s.at(i)=='V' || s.at(i)=='X'))
+            {//判断IV IX
+                roman_sum=roman_sum - 1*2;
+            }
+            if(s.at(i-1) == 'X' && (s.at(i)=='L' || s.at(i)=='C'))
+            {//判断XL XC
+                roman_sum=roman_sum - 10*2;
+            }
+            if(s.at(i-1) =='C' && (s.at(i)=='D' || s.at(i)=='M'))
+            {//判断CD CM
+                roman_sum = roman_sum - 100*2;
+            }
+        }
+        return roman_sum;
+     }
+};
