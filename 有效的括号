@@ -1,0 +1,18 @@
+Python
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        list = []
+        for c in s:
+            if (c == '('):
+                list.append(')')
+            elif (c == '{'):
+                list.append('}')
+            elif (c == '['):
+                list.append(']')
+            elif (not list or c != list.pop()):
+                return False
+        return not list
+        
+C++
+
