@@ -1,0 +1,24 @@
+Python
+
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        for i in range(len(nums)):
+            if i != nums[i]:
+                return i
+            else:
+                return i+1
+C++
+
+class Solution
+{
+public:
+    int missingNumber(vector<int>& nums)
+    {
+        int len = nums.size()
+        for (int i=0; i<nums.size(); i++)
+        {
+            len += (i-nums[i]);
+        }
+        return len;
+    }
