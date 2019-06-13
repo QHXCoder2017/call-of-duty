@@ -14,3 +14,36 @@ class Solution:
         
 C++
 
+class Solution
+{
+public:
+    bool backspaceCompare(string S, string T)
+    {
+        stack<char> stack_s, stack_t;
+        for(auto ch: S)
+        {
+            if(ch == '#')
+            {
+                if(stack_s.empty())
+                    continue;
+                stack_s.pop();
+                continue;
+            }
+            stack_s.push(ch);
+        }
+        for(auto ch: T)
+        {
+            if(ch == '#')
+            {
+                if(stack_t.empty())
+                    continue;
+                stack_t.pop();
+                continue;
+            }
+            stack_t.push(ch);
+        }
+        if(stack_s != stack_t)
+            return false;
+        return true;
+    }
+};
