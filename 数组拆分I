@@ -1,0 +1,10 @@
+Python
+
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        numlist = list(nums)
+        numlist.sort()
+        Sum = 0
+        for i in range(0, len(numlist), 2):
+            Sum += numlist[i]
+        return Sum
