@@ -1,0 +1,16 @@
+Python
+
+class Solution:
+    def backspaceCompare(self, S: str, T: str) -> bool:
+        def build(s):
+            stack = []
+            for i in s:
+                if i != '#':
+                    stack.append(i)
+                elif stack:
+                    stack.pop()
+            return ''.join(stack)
+        return build(S) == build(T)
+        
+C++
+
