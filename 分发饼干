@@ -1,0 +1,38 @@
+Python
+
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        res = 0
+        index = 0
+        g.sort()
+        s.sort()
+        for i in range(0, len(s)):
+            if s[i] >= g[index]:
+                res += 1
+                index += 1
+                if index >= len(g):
+                    break
+        return res
+        
+C++
+
+class Solution
+{
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s)
+    {
+        int res = 0, index = 0;
+        sort(g.begin(), g.end());
+        sort(s.begin(), s.end());
+        for(int i=0; i<s.size(); i++)
+        {
+            if(s[i] >= g[index])
+            {
+                res++;
+                index++;
+                if(index >= g.size()) break;
+            }
+        }
+        return res;
+    }
+};
