@@ -1,0 +1,40 @@
+Python
+
+class Solution:
+    def convertToBase7(self, num: int) -> str:
+        res = ''
+        if num == 0:
+            return '0'
+        temp = abs(num)
+        while temp != 0:
+            tem = temp % 7
+            temp = temp // 7
+            res = str(tem) + res
+        if num < 0:
+            return '-' + res
+        else:
+            return res
+
+C++
+
+class Solution
+{
+public:
+    string convertToBase7(int num)
+    {
+        if (num == 0) return "0";
+        string res = "";
+        bool flag = 1;
+        if (num < 0)
+        {
+            flag = 0;
+            num = -num;
+        }
+        while (num != 0) 
+        {
+            res = to_string(num % 7) + res;
+            num /= 7;
+        }
+        return flag ? res : "-" + res;
+    }
+};
