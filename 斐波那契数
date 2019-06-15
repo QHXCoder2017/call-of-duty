@@ -1,0 +1,33 @@
+Python
+
+class Solution:
+    def fib(self, N: int) -> int:
+        if N < 0:
+            return
+        if N == 0 or N == 1:
+            return 1 if N == 1 else 0
+        one, two = 0, 1
+        for i in range(0, N-1):
+            one, two = two, one + two
+        return two
+        
+C++
+
+class Solution
+{
+public:
+    int fib(int N)
+    {
+        int  f1,f2,f3;
+        f1 = 1;
+        f2 = 1;
+        if(N==1 || N==2) return 1;
+        for (int i=3; i<=N; i++)
+        { 
+            f3 = f1 + f2;
+            f1 = f2; 
+            f2 = f3;
+        }
+        return f3;
+    }
+};
