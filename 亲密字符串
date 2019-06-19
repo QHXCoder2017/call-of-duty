@@ -25,3 +25,49 @@ class Solution:
                 return False
         else:
             return False
+
+C++
+
+class Solution
+{
+public:
+    bool buddyStrings(string A, string B)
+    {
+        vector<int> a;
+        if(A.length()==0 || B.length()==0) return false;
+        else if(A.length()!=B.length()) return false;
+        for(int i=0; i<A.length() && i<B.length(); i++)
+        {
+            if(A[i] != B[i])
+            {
+                a.push_back(i);
+            }
+        }
+        char temp;
+        if(A != B)
+        {
+            temp = A[a[0]];
+            A[a[0]] = A[a[1]];
+            A[a[1]] = temp;
+            if(A==B) return true;
+            else return false;
+        }
+        else
+        {
+            int i = 1;
+            bool flag = true;
+            while(i<A.length())
+            {
+                if(A[i] == A[0]) {flag = true; break;}
+                else
+                {
+                    flag = false;
+                }
+                i++;
+            }
+            if(flag == true) return true;
+            else return false;
+        }
+        return false;
+    }
+};
