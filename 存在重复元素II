@@ -1,0 +1,29 @@
+Python
+
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        if nums == [] or k <= 0:
+            return False
+        d = {} 
+        for i, x in enumerate(nums):
+            if x in d and i-d[x] <= k:
+                return True
+            d[x] = i
+        return False
+        
+C++
+
+class Solution
+{
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k)
+    {
+        unordered_map<int, int> m;
+        for (int i=0; i<nums.size(); i++)
+        {
+            if (m.find(nums[i]) != m.end() && i - m[nums[i]] <= k) return true;
+            else m[nums[i]] = i;
+        }
+        return false;
+    }
+};
