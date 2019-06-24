@@ -1,0 +1,40 @@
+Python
+
+class Solution:
+    def bitwiseComplement(self, N: int) -> int:
+        if N == 0:
+            return 1
+        res = 0
+        now = 1
+        while N:
+            if N % 2 == 0:
+                res += now
+            now <<= 1
+            N >>= 1
+        return res
+        
+C++
+
+class Solution
+{
+public:
+    int bitwiseComplement(int N)
+    {
+        if(0 == N)
+        {
+            return 1;
+        }
+        int res = 0;
+        int now = 1;
+        while(N)
+        {
+            if(0 == N % 2)
+            {
+                res += now;
+            }
+            now <<= 1;
+            N >>= 1;
+        }
+        return res;
+    }
+};
