@@ -1,0 +1,27 @@
+Python
+
+class Solution:
+    def constructRectangle(self, area: int) -> List[int]:
+        n = int(area**0.5)
+        if n == area**0.5:
+            return [n, n]
+        for i in in range(0, n, -1):
+            if area % i == 0:
+                return [area // i, i]
+                
+C++
+
+class Solution
+{
+public:
+    vector<int> constructRectangle(int area)
+    {
+        int x = (int) ceil(sqrt(area));
+        while (area % x != 0)
+        {
+            x++;
+        }
+        int y = area / x;
+        return vector<int> {x, y};
+    }
+};
