@@ -16,7 +16,7 @@ class Solution
 public:
     vector<int> constructRectangle(int area)
     {
-        int x = (int) ceil(sqrt(area));
+        int x = (int) ceil(sqrt(area));  // ceil(x)返回的是大于x的最小整数
         while (area % x != 0)
         {
             x++;
