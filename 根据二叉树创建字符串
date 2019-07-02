@@ -1,0 +1,55 @@
+Python
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def tree2str(self, t: TreeNode) -> str:
+        def explore(r):                                 # 函数将一棵树转换为带括号的字符串
+            if not r:                                   
+                result = ""                             
+            elif not r.left and not r.right:            # 如果输入根节点即为叶子结点
+                result = str(r.val)                     
+            else:                                       # 如果该结点不是叶子结点
+                result = str(r.val)                     # 先把当前结点的值添加进去
+                # 如果存在左子树，则前序遍历左子树，并用括号括起来，否则在根节点后直接添加一对括号即可
+                result = result + "(" + explore(r.left) + ")" if r.left else result + '()'
+                # 如果存在右子树，则前序遍历右子树，并用括号括起来，否则不增加任何字符
+                result = result + "(" + explore(r.right) + ")" if r.right else result
+            return result                               
+        return explore(t)      
+        
+C++
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode
+ * {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution
+{
+public:
+    string tree2str(TreeNode* t)
+    {
+        if (t==nullptr)
+            return "";
+        string res;
+        res += to_string(t->val);
+        if(t->left)
+            res += "(" + tree2str(t->left) + ")";
+        else if(t->right)
+            res += "()";
+        if(t->right)
+            res += "(" + tree2str(t->right) + ")";
+        return res;
+    }
+};
