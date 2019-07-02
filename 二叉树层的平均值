@@ -1,0 +1,47 @@
+Python
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def averageOfLevels(self, root: TreeNode) -> List[float]:
+        if(root == None):
+            return []
+        else:
+            res = []
+            queue = [root]
+            while(len(queue) > 0):
+                tempList = []
+                for i in range(len(queue)):
+                    temp = queue.pop(0)
+                    tempList.append(temp.val)
+                    if(temp.left):
+                        queue.append(temp.left)
+                    if(temp.right):
+                        queue.append(temp.right)
+                res.append(sum(tempList)/len(tempList))
+            return res
+            
+class Solution:
+    def averageOfLevels(self, root: TreeNode) -> List[float]:
+        if not root:
+            return []
+        next_layer = [root.left, root.right]
+        result = [float(root.val)]
+        while(next_layer):
+            temp_next_layer = list()
+            layer_value = list()
+            for node in next_layer:
+                if not node:
+                    continue
+                temp_next_layer.append(node.left)
+                temp_next_layer.append(node.right)
+                layer_value.append(node.val)
+            if layer_value:
+                result.append(sum(layer_value) / float(len(layer_value)))
+            next_layer = temp_next_layer
+        return result
