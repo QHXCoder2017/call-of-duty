@@ -45,3 +45,41 @@ class Solution:
                 result.append(sum(layer_value) / float(len(layer_value)))
             next_layer = temp_next_layer
         return result
+
+C++
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution
+{
+public:
+    vector<double> averageOfLevels(TreeNode* root)
+    {
+        vector<double> average;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty())
+        {
+            double temp = 0.0;
+            int s = q.size();
+            for (int i=0; i<s; i++)
+            {
+                temp += q.front() -> val;
+                if(q.front()->left)
+                    q.push(q.front()->left);
+                if(q.front()->right)
+                    q.push(q.front()->right);
+                q.pop();
+            }
+            average.push_back(temp/s);
+        }
+        return average;
+    }
+};
